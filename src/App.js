@@ -3,7 +3,7 @@ import VideoJS from "./components/VideoJS";
 
 export default function App() {
   const playerRefs = useRef([]);
-  const streamIp = "192.168.0.109"
+  const streamIp = "192.168.0.5"
 
   const videos = [
     {

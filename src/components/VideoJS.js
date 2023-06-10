@@ -23,13 +23,13 @@ export const VideoJS = (props) => {
         onReady && onReady(player);
       }));
 
-      player.vr({ projection: "360", gyroscopic: "true" });
+      // player.vr({ projection: "360", gyroscopic: "true" });
       player.ima(imaOptions);
     } else {
       player = playerRef.current;
       player.autoplay(options.autoplay);
       player.src(options.sources);
-      player.vr({ projection: "360" });
+      // player.vr({ projection: "360" });
       player.ima(imaOptions);
     }
 
