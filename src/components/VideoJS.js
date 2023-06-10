@@ -16,21 +16,30 @@ export const VideoJS = (props) => {
   useEffect(() => {
     if (!playerRef.current) {
       const videoElement = videoRef.current;
+      var player;
       if (!videoElement) return;
 
-      const player = (playerRef.current = videojs(videoElement, options, () => {
+      player = (playerRef.current = videojs(videoElement, options, () => {
         onReady && onReady(player);
       }));
 
       player.vr({ projection: "360", gyroscopic: "true" });
       player.ima(imaOptions);
     } else {
-      const player = playerRef.current;
+      player = playerRef.current;
       player.autoplay(options.autoplay);
       player.src(options.sources);
       player.vr({ projection: "360" });
       player.ima(imaOptions);
     }
+
+    // add CORS headers to the HLS manifest request
+    // player.on('beforeRequest', function (options) {
+    //   options.headers = options.headers || {};
+    //   options.headers['Access-Control-Allow-Origin'] = '*';
+    //   options.headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept';
+    // });
+
   }, [options, videoRef]);
 
   useEffect(() => {
